@@ -8,6 +8,7 @@ import BookDetail from "./pages/users/BookDetail/BookDetail";
 import AboutUs from "./pages/users/AboutUs/AboutUs";
 import NotFound from "./pages/NotFound/NotFound";
 import ShoppingCart from "./pages/users/ShoppingCart/ShoppingCart";
+import Checkout from "./pages/users/Checkout/Checkout";
 import Products from "./pages/admin/Products";
 import AddBook from "./pages/admin/Products/Addproducts";
 import { ROUTERS } from "./ultils/router";
@@ -21,13 +22,13 @@ const userRoutes = [
   { path: ROUTERS.USER.ABOUTUS, component: <AboutUs /> },
   { path: ROUTERS.USER.CART, component: <ShoppingCart /> },
   { path: ROUTERS.USER.ERROR, component: <NotFound /> },
+  { path: ROUTERS.USER.CHECKOUT, component: <Checkout /> },
 ];
 
 const adminRoutes = [
   { path: ROUTERS.ADMIN.PRODUCTS, component: <Products /> },
-  {path:ROUTERS.ADMIN.ADDBOOK, component:<AddBook/>},
-  {path:ROUTERS.ADMIN.EDITBOOK, component:<EditBook/>}
- 
+  { path: ROUTERS.ADMIN.ADDBOOK, component: <AddBook /> },
+  { path: ROUTERS.ADMIN.EDITBOOK, component: <EditBook /> },
 ];
 
 const RouterCustom = () => {
@@ -41,7 +42,11 @@ const RouterCustom = () => {
           <MasterLayout>
             <Routes>
               {userRoutes.map((route, index) => (
-                <Route key={index} path={route.path} element={route.component} />
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={route.component}
+                />
               ))}
             </Routes>
           </MasterLayout>
@@ -59,4 +64,3 @@ const RouterCustom = () => {
 };
 
 export default RouterCustom;
-

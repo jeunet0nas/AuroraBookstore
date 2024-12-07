@@ -1,0 +1,48 @@
+.checkout-page {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 3rem;
+  height: 53.125rem;
+  margin: 0 0;
+}
+
+.checkout-form-column,
+.checkout-summary-column {
+  width: 10rem;
+}
+
+.checkout-form-card,
+.checkout-summary-card {
+  border-radius: 0rem;
+  box-shadow: none;
+  border: none;
+}
+
+.checkout-form-title,
+.checkout-summary-title {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.checkout-label {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.form-checkout-custom {
+  margin-bottom: 1.5rem;
+}
+
+.form-checkout-custom .form-label {
+  margin-bottom: 1rem;
+}
+
+.order-summary-details {
+  margin-bottom: 1.5rem;
+}
+
+.btn-purchase {
+  width: 100%;
+}
+

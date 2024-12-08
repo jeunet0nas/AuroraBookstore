@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image, Container, Row, Col, Button } from "react-bootstrap";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgImage from "../../../assets/users/LoginSignup/login-bg.jpg";
 import logo from "../../../assets/common/f_logo_red.svg";
 import "./LoginSignup.css";
@@ -11,6 +11,20 @@ export default function LoginSignup() {
   const [cname, setCname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [loginUser, setLoginUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
+
+  const [reiUser, setReiUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
+
+  const navigate = useNavigate();
 
   const handleChangeAction = () => {
     setAction(action === "Login" ? "Sign Up" : "Login");
@@ -33,12 +47,17 @@ export default function LoginSignup() {
   };
 
   const handleSignUp = () => {
-    console.log("1");
+    registerNewUser();
 
     if (!cname || !email || !password) {
       alert("Please fill in all fields");
       return;
     }
+  };
+
+  const registerNewUser = async (e) => {
+    e.preventDefault();
+    console.log(reiUser);
   };
 
   return (
@@ -84,8 +103,20 @@ export default function LoginSignup() {
                     type="text"
                     placeholder="Username"
                     className="login-signup-input"
-                    value={cname}
-                    onChange={(e) => setCname(e.target.value)}
+                    value={
+                      action === "Login" ? loginUser.username : reiUser.username
+                    }
+                    onChange={(e) =>
+                      action === "Login"
+                        ? setLoginUser({
+                            ...loginUser.username,
+                            name: e.target.value,
+                          })
+                        : setReiUser({
+                            ...reiUser.username,
+                            name: e.target.value,
+                          })
+                    }
                   />
                 </div>
               )}
@@ -94,8 +125,10 @@ export default function LoginSignup() {
                   type="text"
                   placeholder="Email address or phone number"
                   className="login-signup-input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={reiUser.email}
+                  onChange={(e) =>
+                    setReiUser({ ...reiUser.email, email: e.target.value })
+                  }
                 />
               </div>
 
@@ -105,7 +138,17 @@ export default function LoginSignup() {
                   placeholder="Password"
                   className="login-signup-input"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) =>
+                    action === "Login"
+                      ? setLoginUser({
+                          ...loginUser.password,
+                          name: e.target.value,
+                        })
+                      : setReiUser({
+                          ...reiUser.password,
+                          name: e.target.value,
+                        })
+                  }
                 />
               </div>
 
